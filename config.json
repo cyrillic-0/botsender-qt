@@ -1,0 +1,5 @@
+{
+    "token": "your bot token",
+    "chat_id": "your chat id(without double quotes)",
+    "verbose_data": "your log filename"
+}
