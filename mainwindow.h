@@ -24,10 +24,19 @@ private slots:
 
     void on_send_message_btn_clicked();
 
+    void on_actionImport_from_JSON_triggered();
+
+    void on_actionQuit_triggered();
+
+    void on_actionAbout_triggered();
+
+    void on_actionAbout_Qt_triggered();
+
 private:
     BotSender bot;
     Json::Reader reader;
     Json::Value root;
+    void json_import();
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

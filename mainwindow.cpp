@@ -19,8 +19,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-void MainWindow::on_json_import_btn_clicked()
+void MainWindow::json_import()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Import from a JSON File");
     std::fstream file(filename.toStdString());
@@ -34,6 +33,15 @@ void MainWindow::on_json_import_btn_clicked()
     ui->log_file->setText(QString::fromStdString(this->root["verbose_data"].asString()));
 }
 
+void MainWindow::on_json_import_btn_clicked()
+{
+    json_import();
+}
+
+void MainWindow::on_actionImport_from_JSON_triggered()
+{
+    json_import();
+}
 
 void MainWindow::on_log_checkbox_stateChanged(int arg1)
 {
@@ -53,5 +61,25 @@ void MainWindow::on_send_message_btn_clicked()
     bool ok;
     QString text = QInputDialog::getText(this, "Send a message", "Enter a message:", QLineEdit::Normal, QDir::home().dirName(), &ok);
     bot.sendMessage(text.toStdString());
+}
+
+
+
+
+void MainWindow::on_actionQuit_triggered()
+{
+    QApplication::quit();
+}
+
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox::about(this, "About", "BotSender v1.2.1");
+}
+
+
+void MainWindow::on_actionAbout_Qt_triggered()
+{
+    QMessageBox::aboutQt(this, "About Qt");
 }
 
